@@ -6,109 +6,83 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:51:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/12 11:55:02 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/12 19:15:08 by ezanotti         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-#include <stdio.h>
-#include <sys/time.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <stdlib.h>
+/*void *test(void *ar)
+{
+	while (1)
+	{
+		printf("f \n");
+		sleep(30);
+	}
+	(void)ar;
+	return (NULL);
+}*/
+
+void	ft_eat(t_args *args)
+{
+	int	actual;
+
+	actual = args->actual;
+	// LOCK
+	if (args->nb_forks >= 2)
+		args->nb_forks -= 2;
+	usleep(args->time_to_eat);
+	args->nb_forks += 2;
+
+	printf("timestamp_in_ms %d has taken a fork\n", actual);
+	//UNLOCK
+}
+
+void	*ft_survive(void *data)
+{
+	t_args *args = (t_args *)data;
+
+	ft_eat(args);
+
+
+
+
+	printf("%d\n", args->time_to_sleep);
+
+	return (NULL);
+}
+
+int	ft_launch_philosopers(t_args *args)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	while (i < args->nb_philo)
+	{
+		args->actual = i;
+		ret = pthread_create(&args->philosophers[i++], NULL, ft_survive, \
+			(void *)args);
+		if (ret)
+			return (1);
+		usleep(50000);
+	}
+	i = 0;
+	while (i < args->nb_philo)
+		pthread_join(args->philosophers[i++], NULL);
+	return (0);
+}
 
 int	main(int argc,char **argv)
 {
+	t_args	*args;
+
 	if (argc != 5 && argc != 6)
 		printf("NON\n");
-	(void)argv;
-
-
+	args = ft_struct_init(argv, argc);
+	if (!args)
+		return (1);
+	if (ft_launch_philosopers(args) != 0)
+		return (1);
 
 }
-
-/*int	main(int argc, char **argv)
-{
-	int ret;
-	pthread_t	thrd_store;
-	printf("Creer un thread !\n");
-	ret = pthread_create(&thrd_store, NULL, ft_store, NULL);
-	pthread_t	thrd_client;
-	if (ret == 0)
-	{
-		ret = pthread_create(&thrd_client, NULL, ft_client, NULL);
-
-		if (ret)
-			return (0);
-	}
-	else
-		return (0);
-
-	pthread_join(thrd_client, NULL);
-	pthread_join(thrd_store, NULL);
-
-
-	(void)argc;
-	(void)argv;
-}*/
-
-/*typedef struct
-{
-	int stock;
-
-	pthread_t thread_store;
-	pthread_t thread_clients;
-
-	pthread_mutex_t mutex_stock;
-}	store_t;
-
-static store_t store =
-{
-   .stock = INITIAL_STOCK,
-};
-
-static int get_random (int max)
-{
-   double val;
-
-   val = (double) max * rand ();
-   val = val / (RAND_MAX + 1.0);
-
-   return ((int) val);
-}
-
-void	*ft_store(void *p_data)
-{
-	while (1)
-	{
-		pthread_mutex_lock(&store.mutex_stock);
-		if (store.stock <= 0)
-		{
-			store.stock = INITIAL_STOCK;
-			printf("fill-up the store\n");
-		}
-		pthread_mutex_unlock(&store.mutex_stock);
-	}
-	(void)p_data;
-	return (NULL);
-}
-
-void	*ft_client(void *p_data)
-{
-	int ran;
-
-	while (1)
-	{
-		pthread_mutex_lock(&store.mutex_stock);
-
-		ran = get_random(5);
-		sleep(get_random(5));
-		store.stock -= ran;
-		printf("take %d item !\n", ran);
-
-		pthread_mutex_unlock(&store.mutex_stock);
-	}
-	(void)p_data;
-	return (NULL);
-}*/

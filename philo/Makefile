@@ -6,12 +6,12 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 11:24:38 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/10 14:26:09 by ezanotti         ###   ########lyon.fr    #
+#    Updated: 2022/12/12 15:24:39 by ezanotti         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # SOURCES
-S_PHILO	= ${DIR_SRC}main.c
+S_PHILO	= ${DIR_SRC}main.c ${DIR_SRC}ft_atoi.c ${DIR_SRC}ft_struct_init.c
 
 OBJS	= ${S_PHILO:.c=.o}
 
