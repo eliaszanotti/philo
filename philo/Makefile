@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 11:24:38 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/10 11:26:46 by ezanotti         ###   ########lyon.fr    #
+#    Updated: 2022/12/10 14:26:09 by ezanotti         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJS	= ${S_PHILO:.c=.o}
 NAME	= philo
 DIR_SRC = srcs/
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 RM		= rm -rf
 
 # COMPILATION
