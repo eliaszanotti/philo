@@ -32,5 +32,8 @@ typedef struct s_args
 
 int ft_struct_init(t_args *args, char **argv);
 int	ft_atoi(const char *str);
+// ERROR
+int	ft_error(int error_code);
+int	ft_argv_checker(char **argv);
 
 #endif
