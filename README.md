@@ -1,4 +1,4 @@
-# philo
+# Philosophers
 
 ## Error codes 
 
