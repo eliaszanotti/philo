@@ -2,6 +2,11 @@
 
 #include "philo.h"
 
+void	ft_print_info(t_philo *philo, char *str)
+{
+	printf("timestampinms %d %s\n", philo->nb, str);
+}
+
 static void	*ft_born(void *data)
 {
 	t_philo	*philo;
@@ -9,11 +14,9 @@ static void	*ft_born(void *data)
 	philo = (t_philo *)data;
 	while (1)
 	{
-		printf("test venant de %d\n", philo->nb);
+		ft_print_info(philo, "has taken a fork");
 		sleep(1);
-
 	}
-
 	return (NULL);
 }
 
@@ -36,12 +39,12 @@ int	ft_launch_philos(t_args *args)
 	i = -1;
 	while (++i < args->nb_philo)
 	{
-		usleep(500);
-		ret = pthread_create(&(philos[i].thread), NULL, ft_born, &philos[i]);
-		usleep(500);
+		usleep(5000);
+		ret = pthread_create(&philos[i].thread, NULL, ft_born, &philos[i]);
 		if (ret)
 			return (4);
 	}
+	ft_wait_threads(args);
 	return (0);
 }
 
@@ -95,4 +98,4 @@ void	*ft_survive(void *data)
 			(void *)args);
 		if (ret)
 			return (1);
-		usleep(50000);
+		usleep(50000);*/

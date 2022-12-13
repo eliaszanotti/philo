@@ -12,7 +12,7 @@
 
 # SOURCES
 S_PHILO	= ${DIR_SRC}main.c ${DIR_SRC}ft_atoi.c ${DIR_SRC}ft_struct_init.c \
-		${DIR_SRC}ft_error.c
+		${DIR_SRC}ft_error.c ${DIR_SRC}ft_launch_philos.c
 
 OBJS	= ${S_PHILO:.c=.o}
 
