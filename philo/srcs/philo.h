@@ -18,16 +18,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+typedef struct s_philo
+{
+	int			nb;
+	pthread_t	thread;
+}	t_philo;
+
 typedef struct s_args
 {
+	t_philo		*philos;
 	int			nb_philo;
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
 	int			nb_meal;
-	pthread_t	*philosophers;
 	int			nb_forks;
-	int			actual;
 }	t_args;
 
 int ft_struct_init(t_args *args, char **argv);

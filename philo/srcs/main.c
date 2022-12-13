@@ -23,18 +23,14 @@
 	return (NULL);
 }*/
 
-void	ft_eat(t_args *args)
+/*void	ft_eat(t_args *args)
 {
-	int	actual;
-
-	actual = args->actual;
 	// LOCK
 	if (args->nb_forks >= 2)
 		args->nb_forks -= 2;
 	usleep(args->time_to_eat);
 	args->nb_forks += 2;
 
-	printf("timestamp_in_ms %d has taken a fork\n", actual);
 	//UNLOCK
 }
 
@@ -50,9 +46,9 @@ void	*ft_survive(void *data)
 	printf("%d\n", args->time_to_sleep);
 
 	return (NULL);
-}
+}*/
 
-int	ft_launch_philosopers(t_args *args)
+/*int	ft_launch_philosopers(t_args *args)
 {
 	int	i;
 	int	ret;
@@ -71,10 +67,53 @@ int	ft_launch_philosopers(t_args *args)
 	while (i < args->nb_philo)
 		pthread_join(args->philosophers[i++], NULL);
 	return (0);
+}*/
+
+void	*ft_born(void *data)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)data;
+	while (1)
+	{
+		printf("test venant de %d\n", philo->nb);
+		sleep(1);
+
+	}
+
+	return (NULL);
+}
+
+void	ft_wait_threads(t_args *args)
+{
+	int	i;
+
+	i = -1;
+	while (++i < args->nb_philo)
+		pthread_join(args->philos[i].thread, NULL);
 }
 
 
-int	main(int argc,char **argv)
+int	ft_launch_philos(t_args *args)
+{
+	t_philo	*philos;
+	int	i;
+	int	ret;
+
+	philos = args->philos;
+	i = -1;
+	while (++i < args->nb_philo)
+	{
+		usleep(500);
+		ret = pthread_create(&(philos[i].thread), NULL, ft_born, &philos[i]);
+		usleep(500);
+		if (ret)
+			return (4);
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
 {
 	t_args	args;
 	int		error_code;
@@ -87,7 +126,7 @@ int	main(int argc,char **argv)
 	error_code = ft_struct_init(&args, argv);
 	if (error_code)
 		return (ft_error(error_code));
-	//if (ft_launch_philosopers(&args))
-	//	return (1);
-
+	error_code = ft_launch_philos(&args);
+	if (error_code)
+		return (ft_error(error_code));
 }
