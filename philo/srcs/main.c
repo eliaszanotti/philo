@@ -73,16 +73,29 @@ int	ft_launch_philosopers(t_args *args)
 	return (0);
 }
 
+int	ft_error(int error_code)
+{
+	if (error_code == 1)
+		printf("\e[0;31m[ERROR]\e[0m Wrong amount of arguments\n");
+	if (error_code == 2)
+		printf("\e[0;31m[ERROR]\e[0m Incorrect arguments\n");
+	if (error_code == 3)
+		printf("\e[0;31m[ERROR]\e[0m Malloc cannot be created\n");
+
+	return (error_code);
+}
+
 int	main(int argc,char **argv)
 {
-	t_args	*args;
+	t_args	args;
+	int		error_code;
 
 	if (argc != 5 && argc != 6)
-		printf("NON\n");
-	args = ft_struct_init(argv, argc);
-	if (!args)
-		return (1);
-	if (ft_launch_philosopers(args) != 0)
-		return (1);
+		return (ft_error(1));
+	error_code = ft_struct_init(&args, argv);
+	if (error_code)
+		return (ft_error(error_code));
+	//if (ft_launch_philosopers(&args))
+	//	return (1);
 
 }

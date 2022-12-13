@@ -30,7 +30,7 @@ typedef struct s_args
 	int			actual;
 }	t_args;
 
+int ft_struct_init(t_args *args, char **argv);
 int	ft_atoi(const char *str);
-t_args	*ft_struct_init(char **argv, int argc);
 
 #endif
