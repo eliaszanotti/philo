@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_philos_init(t_args *args)
+static int	ft_philos_init(t_args *args)
 {
 	int		i;
 

@@ -35,10 +35,14 @@ typedef struct s_args
 	int			nb_forks;
 }	t_args;
 
-int ft_struct_init(t_args *args, char **argv);
+// ft_atoi.c
 int	ft_atoi(const char *str);
-// ERROR
+// ft_error.c
 int	ft_error(int error_code);
 int	ft_argv_checker(char **argv);
+// ft_launch_philos.c
+int	ft_launch_philos(t_args *args);
+// ft_struct_init.c
+int	ft_struct_init(t_args *args, char **argv);
 
 #endif
