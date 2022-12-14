@@ -16,6 +16,10 @@ static void	*ft_born(void *data)
 	{
 		ft_print_info(philo, "has taken a fork");
 		sleep(1);
+
+
+		
+		
 	}
 	return (NULL);
 }

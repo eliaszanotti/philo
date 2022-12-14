@@ -20,19 +20,22 @@
 
 typedef struct s_philo
 {
-	int			nb;
+	int		nb;
+	int		left_fork;
+	int		right_fork;
 	pthread_t	thread;
 }	t_philo;
 
 typedef struct s_args
 {
 	t_philo		*philos;
-	int			nb_philo;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			nb_meal;
-	int			nb_forks;
+	int		nb_philo;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		nb_meal;
+	int		nb_forks;
+	int		*forks;		 
 }	t_args;
 
 // ft_atoi.c
