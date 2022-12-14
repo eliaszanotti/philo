@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 14:00:46 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 14:59:48 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int	ft_philos_init(t_args *args)
 int	ft_struct_init(t_args *args, char **argv)
 {
 	args->nb_philo = ft_atoi(argv[1]);
-	args->time_to_die = ft_atoi(argv[2]);
-	args->time_to_eat = ft_atoi(argv[3]);
-	args->time_to_sleep = ft_atoi(argv[4]);
+	args->time_to_die = ft_atoi(argv[2]) * 1000;
+	args->time_to_eat = ft_atoi(argv[3]) * 1000;
+	args->time_to_sleep = ft_atoi(argv[4]) * 1000;
 	if (args->nb_philo < 1 || args->nb_philo > 256 || args->time_to_die < 0 \
 			|| args->time_to_eat < 0 || args->time_to_sleep < 0)
 		return (3);
