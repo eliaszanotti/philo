@@ -9,6 +9,8 @@ int	ft_error(int error_code)
 		printf("Arguments are not valid integers\n");
 	if (error_code == 3)
 		printf("Incorrect arguments\n");
+	if (error_code == 4)
+		printf("Impossible to create threads\n");
 	if (error_code == 9)
 		printf("Malloc cannot be created\n");
 	return (error_code);

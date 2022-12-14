@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/12 19:09:45 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 14:00:46 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	ft_philos_init(t_args *args)
 	while (i++ < args->nb_philo)
 	{
 		args->philos[i].nb = i;
+		args->philos[i].rules = args;
 	}
 	return (0);
 }
@@ -43,7 +44,7 @@ int	ft_struct_init(t_args *args, char **argv)
 	args->philos = malloc(sizeof(t_philo) * args->nb_philo);
 	if (!args->philos)
 		return (9);
+	args->first_time = ft_get_time();
 	ft_philos_init(args);
-	args->nb_forks = args->nb_philo;
 	return (0);
 }

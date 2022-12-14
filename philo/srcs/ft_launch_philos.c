@@ -1,27 +1,28 @@
-// HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_launch_philos.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: event01 <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/14 13:46:53 by ezanotti          #+#    #+#             */
+/*   Updated: 2022/12/14 14:31:22 by event01          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
 void	ft_print_info(t_philo *philo, char *str)
 {
-	printf("timestampinms %d %s\n", philo->nb, str);
-}
+	long long	first_time;
+	long long	time_diff;
+	t_args		*args;
 
-static void	*ft_born(void *data)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)data;
-	while (1)
-	{
-		ft_print_info(philo, "has taken a fork");
-		sleep(1);
-
-
-		
-		
-	}
-	return (NULL);
+	args = philo->rules;
+	first_time = args->first_time;
+	time_diff = ft_time_diff(first_time, ft_get_time());
+	printf("[\033[4;32m%lli\033[0m] \033[0;32m%d\033[0m %s\n", \
+		time_diff, philo->nb, str);
 }
 
 static void	ft_wait_threads(t_args *args)
@@ -31,6 +32,45 @@ static void	ft_wait_threads(t_args *args)
 	i = -1;
 	while (++i < args->nb_philo)
 		pthread_join(args->philos[i].thread, NULL);
+}
+
+void	ft_eat(t_philo *philo, t_args *args)
+{
+	// LOCK MUTEX
+	
+	
+
+
+	ft_print_info(philo, "is eating");
+	usleep(args->time_to_eat);
+
+
+
+
+
+
+	(void)philo;
+
+	// UNLOCK MUTEX	
+
+}
+
+static void	*ft_born(void *data)
+{
+	t_philo	*philo;
+	t_args	*args;
+
+	philo = (t_philo *)data;
+	args = philo->rules;
+	while (1) // change to while not died 
+	{
+		usleep(500);
+		ft_eat(philo, args);
+		ft_print_info(philo, "is sleeping");
+		usleep(args->time_to_sleep);
+		ft_print_info(philo, "is thinking");
+	}
+	return (NULL);
 }
 
 int	ft_launch_philos(t_args *args)
@@ -43,7 +83,7 @@ int	ft_launch_philos(t_args *args)
 	i = -1;
 	while (++i < args->nb_philo)
 	{
-		usleep(5000);
+		usleep(50);
 		ret = pthread_create(&philos[i].thread, NULL, ft_born, &philos[i]);
 		if (ret)
 			return (4);
@@ -51,55 +91,3 @@ int	ft_launch_philos(t_args *args)
 	ft_wait_threads(args);
 	return (0);
 }
-
-
-/*void *test(void *ar)
-{
-	while (1)
-	{
-		printf("f \n");
-		sleep(30);
-	}
-	(void)ar;
-	return (NULL);
-}*/
-
-/*void	ft_eat(t_args *args)
-{
-	// LOCK
-	if (args->nb_forks >= 2)
-		args->nb_forks -= 2;
-	usleep(args->time_to_eat);
-	args->nb_forks += 2;
-
-	//UNLOCK
-}
-
-void	*ft_survive(void *data)
-{
-	t_args *args = (t_args *)data;
-
-	ft_eat(args);
-
-
-
-
-	printf("%d\n", args->time_to_sleep);
-
-	return (NULL);
-}*/
-
-/*int	ft_launch_philosopers(t_args *args)
-{
-	int	i;
-	int	ret;
-
-	i = 0;
-	while (i < args->nb_philo)
-	{
-		args->actual = i;
-		ret = pthread_create(&args->philosophers[i++], NULL, ft_survive, \
-			(void *)args);
-		if (ret)
-			return (1);
-		usleep(50000);*/

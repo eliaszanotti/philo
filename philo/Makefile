@@ -6,13 +6,14 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 11:24:38 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/12 15:24:39 by ezanotti         ###   ########lyon.fr    #
+#    Updated: 2022/12/14 13:42:30 by event01          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # SOURCES
 S_PHILO	= ${DIR_SRC}main.c ${DIR_SRC}ft_atoi.c ${DIR_SRC}ft_struct_init.c \
-		${DIR_SRC}ft_error.c ${DIR_SRC}ft_launch_philos.c
+		${DIR_SRC}ft_error.c ${DIR_SRC}ft_launch_philos.c \
+		${DIR_SRC}ft_time_utils.c 
 
 OBJS	= ${S_PHILO:.c=.o}
 
