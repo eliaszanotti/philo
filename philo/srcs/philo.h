@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 11:35:39 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 14:29:36 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 15:28:45 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_args
 	int			nb_meal;
 	long long	first_time;
 	int			*forks;
+	int			die;
 }	t_args;
 
 typedef struct s_philo
@@ -38,6 +39,7 @@ typedef struct s_philo
 	int			nb;
 	int			left_fork;
 	int			right_fork;
+	long long	last_meal;
 }	t_philo;
 
 // ft_atoi.c

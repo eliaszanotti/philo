@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 14:59:48 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 15:28:25 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ static int	ft_philos_init(t_args *args)
 	i = -1;
 	while (i++ < args->nb_philo)
 	{
-		args->philos[i].nb = i;
 		args->philos[i].rules = args;
+		args->philos[i].nb = i;
+		args->philos[i].left_fork = i;
+		args->philos[i].right_fork = (i + 1) % args->nb_philo;
+		args->philos[i].last_meal = args->first_time;
 	}
 	return (0);
 }
@@ -45,6 +48,7 @@ int	ft_struct_init(t_args *args, char **argv)
 	if (!args->philos)
 		return (9);
 	args->first_time = ft_get_time();
+	args->die = 0;
 	ft_philos_init(args);
 	return (0);
 }

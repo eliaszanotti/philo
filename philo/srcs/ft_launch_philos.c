@@ -6,7 +6,7 @@
 /*   By: event01 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:46:53 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 14:31:22 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 15:35:53 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_info(t_philo *philo, char *str)
 	args = philo->rules;
 	first_time = args->first_time;
 	time_diff = ft_time_diff(first_time, ft_get_time());
-	printf("[\033[4;32m%lli\033[0m] \033[0;32m%d\033[0m %s\n", \
+	printf("\033[1;32m[%lli ms]\033[0m \033[0;32m%d\033[0m %s\n", \
 		time_diff, philo->nb, str);
 }
 
@@ -36,18 +36,21 @@ static void	ft_wait_threads(t_args *args)
 
 void	ft_eat(t_philo *philo, t_args *args)
 {
+	long long	time_diff;
+
 	// LOCK MUTEX
 	
-	
-
-
+	time_diff = ft_time_diff(philo->last_meal, ft_get_time());
+	printf("\t%lli, %lli\n", time_diff, ft_get_time() - args->first_time);
+	if (time_diff > args->time_to_die)
+	{
+		args->die = 1;
+		ft_print_info(philo, "is dead");
+		return ;
+	}
+	philo->last_meal = ft_get_time();
 	ft_print_info(philo, "is eating");
 	usleep(args->time_to_eat);
-
-
-
-
-
 
 	(void)philo;
 
@@ -62,7 +65,8 @@ static void	*ft_born(void *data)
 
 	philo = (t_philo *)data;
 	args = philo->rules;
-	while (1) // change to while not died 
+
+	while (!args->die) // change to while not died 
 	{
 		usleep(500);
 		ft_eat(philo, args);
