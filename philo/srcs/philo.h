@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-#include <sys/time.h>
+# include <sys/time.h>
 
 typedef struct s_args
 {
@@ -33,7 +33,7 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	t_args	*rules;
+	t_args		*rules;
 	pthread_t	thread;
 	int			nb;
 	int			left_fork;
@@ -42,15 +42,16 @@ typedef struct s_philo
 }	t_philo;
 
 // ft_atoi.c
-int	ft_atoi(const char *str);
+int			ft_atoi(const char *str);
 // ft_error.c
-int	ft_error(int error_code);
-int	ft_argv_checker(char **argv);
+int			ft_error(int error_code);
+int			ft_argv_checker(char **argv);
+void		ft_print_info(t_philo *philo, char *str);
 // ft_launch_philos.c
-int	ft_launch_philos(t_args *args, t_philo **philos);
+int			ft_launch_philos(t_args *args, t_philo **philos);
 // ft_struct_init.c
-int	ft_struct_init(t_args *args, char **argv);
-int	ft_philos_init(t_args *args, t_philo **philos);
+int			ft_struct_init(t_args *args, char **argv);
+int			ft_philos_init(t_args *args, t_philo **philos);
 // ft_time_utils.c
 long long	ft_get_time(void);
 long long	ft_time_diff(long long start, long long end);
