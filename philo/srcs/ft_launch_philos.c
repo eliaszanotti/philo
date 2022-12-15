@@ -35,7 +35,6 @@ int	ft_eat(t_philo *philo, t_args *args)
 		return (1);
 	}
 	philo->last_meal = ft_get_time();
-
 	philo->nb_meal++;
 	if (philo->nb_meal == args->max_meal)
 		args->meal_finished++; // MUTEX
@@ -53,7 +52,6 @@ static void	*ft_born(void *data)
 
 	philo = (t_philo *)data;
 	args = philo->rules;
-	
 	while (1)
 	{
 		if (ft_eat(philo, args) || args->meal_finished == args->nb_philo)
