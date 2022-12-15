@@ -42,5 +42,5 @@ void	ft_print_info(t_philo *philo, char *str)
 	first_time = args->first_time;
 	time_diff = ft_time_diff(first_time, ft_get_time());
 	printf("\033[1;32m[%lli ms]\033[0m \033[0;32m%d\033[0m %s\n", \
-		time_diff, philo->nb, str);
+		time_diff, philo->nb + 1, str);
 }

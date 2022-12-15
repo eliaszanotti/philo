@@ -31,7 +31,7 @@ int	ft_eat(t_philo *philo, t_args *args)
 	if (time_diff > args->time_to_die)
 	{
 		args->die = 1;
-		ft_print_info(philo, "is dead");
+		ft_print_info(philo, "died");
 		return (1);
 	}
 	philo->last_meal = ft_get_time();
