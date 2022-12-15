@@ -25,10 +25,11 @@ typedef struct s_args
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
-	int			nb_meal;
+	int			max_meal;
 	long long	first_time;
 	int			*forks;
 	int			die;
+	int			meal_finished;
 }	t_args;
 
 typedef struct s_philo
@@ -39,6 +40,7 @@ typedef struct s_philo
 	int			left_fork;
 	int			right_fork;
 	long long	last_meal;
+	int			nb_meal;	
 }	t_philo;
 
 // ft_atoi.c
