@@ -17,7 +17,7 @@ static int	ft_philos_init(t_args *args)
 	int		i;
 
 	i = -1;
-	while (i++ < args->nb_philo)
+	while (++i < args->nb_philo)
 	{
 		args->philos[i].rules = args;
 		args->philos[i].nb = i;

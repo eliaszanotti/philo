@@ -41,7 +41,7 @@ void	ft_eat(t_philo *philo, t_args *args)
 	// LOCK MUTEX
 	
 	time_diff = ft_time_diff(philo->last_meal, ft_get_time());
-	printf("\t%lli, %lli\n", time_diff, ft_get_time() - args->first_time);
+	//printf("\t%lli, %lli\n", time_diff, ft_get_time() - args->first_time);
 	if (time_diff > args->time_to_die)
 	{
 		args->die = 1;
@@ -53,9 +53,7 @@ void	ft_eat(t_philo *philo, t_args *args)
 	usleep(args->time_to_eat);
 
 	(void)philo;
-
 	// UNLOCK MUTEX	
-
 }
 
 static void	*ft_born(void *data)
@@ -66,8 +64,9 @@ static void	*ft_born(void *data)
 	philo = (t_philo *)data;
 	args = philo->rules;
 
-	while (!args->die) // change to while not died 
+	while (!args->die)
 	{
+		printf("\t\t%d\n", args->die);
 		usleep(500);
 		ft_eat(philo, args);
 		ft_print_info(philo, "is sleeping");
