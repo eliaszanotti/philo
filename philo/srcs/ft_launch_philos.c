@@ -25,13 +25,13 @@ void	ft_print_info(t_philo *philo, char *str)
 		time_diff, philo->nb, str);
 }
 
-static void	ft_wait_threads(t_args *args)
+static void	ft_wait_threads(t_args *args, t_philo **philos)
 {
 	int	i;
 
 	i = -1;
 	while (++i < args->nb_philo)
-		pthread_join(args->philos[i].thread, NULL);
+		pthread_join(philos[i]->thread, NULL);
 }
 
 void	ft_eat(t_philo *philo, t_args *args)
@@ -66,7 +66,7 @@ static void	*ft_born(void *data)
 
 	while (!args->die)
 	{
-		printf("\t\t%d\n", args->die);
+		//printf("\t\t%d\n", args->die);
 		usleep(500);
 		ft_eat(philo, args);
 		ft_print_info(philo, "is sleeping");
@@ -76,21 +76,19 @@ static void	*ft_born(void *data)
 	return (NULL);
 }
 
-int	ft_launch_philos(t_args *args)
+int	ft_launch_philos(t_args *args, t_philo **philos)
 {
-	t_philo	*philos;
 	int	i;
 	int	ret;
 
-	philos = args->philos;
 	i = -1;
 	while (++i < args->nb_philo)
 	{
 		usleep(50);
-		ret = pthread_create(&philos[i].thread, NULL, ft_born, &philos[i]);
+		ret = pthread_create(&philos[i]->thread, NULL, ft_born, philos[i]);
 		if (ret)
 			return (4);
 	}
-	ft_wait_threads(args);
+	ft_wait_threads(args, philos);
 	return (0);
 }

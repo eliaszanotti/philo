@@ -12,18 +12,21 @@
 
 #include "philo.h"
 
-static int	ft_philos_init(t_args *args)
+int	ft_philos_init(t_args *args, t_philo **philos)
 {
 	int		i;
 
 	i = -1;
 	while (++i < args->nb_philo)
 	{
-		args->philos[i].rules = args;
-		args->philos[i].nb = i;
-		args->philos[i].left_fork = i;
-		args->philos[i].right_fork = (i + 1) % args->nb_philo;
-		args->philos[i].last_meal = args->first_time;
+		philos[i] = malloc(sizeof(t_philo));
+		if (!philos[i])
+			return (9);
+		philos[i]->rules = args;
+		philos[i]->nb = i;
+		philos[i]->left_fork = i;
+		philos[i]->right_fork = (i + 1) % args->nb_philo;
+		philos[i]->last_meal = args->first_time;
 	}
 	return (0);
 }
@@ -44,11 +47,7 @@ int	ft_struct_init(t_args *args, char **argv)
 		if (args->nb_meal < 1)
 			return (3);
 	}
-	args->philos = malloc(sizeof(t_philo) * args->nb_philo);
-	if (!args->philos)
-		return (9);
 	args->first_time = ft_get_time();
 	args->die = 0;
-	ft_philos_init(args);
 	return (0);
 }

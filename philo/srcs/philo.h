@@ -21,7 +21,6 @@
 
 typedef struct s_args
 {
-	struct s_philo		*philos;
 	int			nb_philo;
 	int			time_to_die;
 	int			time_to_eat;
@@ -48,9 +47,10 @@ int	ft_atoi(const char *str);
 int	ft_error(int error_code);
 int	ft_argv_checker(char **argv);
 // ft_launch_philos.c
-int	ft_launch_philos(t_args *args);
+int	ft_launch_philos(t_args *args, t_philo **philos);
 // ft_struct_init.c
 int	ft_struct_init(t_args *args, char **argv);
+int	ft_philos_init(t_args *args, t_philo **philos);
 // ft_time_utils.c
 long long	ft_get_time(void);
 long long	ft_time_diff(long long start, long long end);

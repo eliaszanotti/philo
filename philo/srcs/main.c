@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_args	args;
+	t_philo	**philos;
 	int		error_code;
 
 	if (argc != 5 && argc != 6)
@@ -25,7 +26,13 @@ int	main(int argc, char **argv)
 	error_code = ft_struct_init(&args, argv);
 	if (error_code)
 		return (ft_error(error_code));
-	error_code = ft_launch_philos(&args);
+	philos = malloc(sizeof(t_philo) * args.nb_philo);
+	if (!philos)
+		return (ft_error(9));
+	error_code = ft_philos_init(&args, philos);
+	if (error_code)
+		return (ft_error(error_code));
+	error_code = ft_launch_philos(&args, philos);
 	if (error_code)
 		return (ft_error(error_code));
 }
