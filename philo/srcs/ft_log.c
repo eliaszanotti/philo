@@ -8,7 +8,7 @@ int	ft_error(int error_code)
 	if (error_code == 2)
 		printf("Arguments are not valid integers\n");
 	if (error_code == 3)
-		printf("Incorrect arguments\n");
+		printf("Incorrect arguments (max number of philosophers is 256)\n");
 	if (error_code == 4)
 		printf("Impossible to create threads\n");
 	if (error_code == 9)
