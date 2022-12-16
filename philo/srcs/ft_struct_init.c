@@ -12,6 +12,20 @@
 
 #include "philo.h"
 
+int	ft_mutex_init(t_args *args)
+{
+	int	i;
+
+	i = 0;
+	args->forks = malloc(sizeof(pthread_mutex_t) * args->nb_philo);
+	if (!args->forks)
+		return (9);
+	while (i < args->nb_philo)
+		if (pthread_mutex_init(&args->forks[i++], NULL))
+			return (8);
+	return (0);
+}
+
 int	ft_philos_init(t_args *args, t_philo **philos)
 {
 	int		i;
@@ -51,5 +65,5 @@ int	ft_struct_init(t_args *args, char **argv)
 	args->first_time = ft_get_time();
 	args->die = 0;
 	args->meal_finished = 0;
-	return (0);
+	return (ft_mutex_init(args));
 }

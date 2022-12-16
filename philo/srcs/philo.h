@@ -27,7 +27,7 @@ typedef struct s_args
 	int			time_to_sleep;
 	int			max_meal;
 	long long	first_time;
-	int			*forks;
+	pthread_mutex_t		*forks;
 	int			die;
 	int			meal_finished;
 }	t_args;
@@ -40,7 +40,7 @@ typedef struct s_philo
 	int			left_fork;
 	int			right_fork;
 	long long	last_meal;
-	int			nb_meal;	
+	int			nb_meal;
 }	t_philo;
 
 // ft_atoi.c

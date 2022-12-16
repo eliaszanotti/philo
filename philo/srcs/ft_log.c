@@ -2,7 +2,8 @@
 
 int	ft_error(int error_code)
 {
-	printf("\e[0;31m[ERROR:%d]\e[0m ", error_code);
+	if (error_code)
+		printf("\e[1;31m[ERROR:%d]\e[0m ", error_code);
 	if (error_code == 1)
 		printf("Wrong amount of arguments\n");
 	if (error_code == 2)
@@ -11,7 +12,11 @@ int	ft_error(int error_code)
 		printf("Incorrect arguments (max number of philosophers is 256)\n");
 	if (error_code == 4)
 		printf("Impossible to create threads\n");
-	if (error_code == 9)
+	if (error_code == 97)
+		printf("Impossible to lock mutex\n");
+	if (error_code == 98)
+		printf("Mutex cannot be initialized\n");
+	if (error_code == 99)
 		printf("Malloc cannot be created\n");
 	return (error_code);
 }
