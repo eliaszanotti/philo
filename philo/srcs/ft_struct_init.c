@@ -23,6 +23,7 @@ int	ft_mutex_init(t_args *args)
 	while (i < args->nb_philo)
 		if (pthread_mutex_init(&args->forks[i++], NULL))
 			return (8);
+	pthread_mutex_init(&args->block, NULL);
 	return (0);
 }
 

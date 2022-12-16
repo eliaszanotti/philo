@@ -44,26 +44,31 @@ void	ft_release_forks(t_philo *philo, t_args *args)
 
 int    ft_eat(t_philo *philo, t_args *args)
 {
-	long long	time_diff;
+	//long long	time_diff;
 	int			error_code;
 
 	error_code = ft_take_forks(philo, args);
 	if (error_code)
 		return (error_code);
-	time_diff = ft_time_diff(philo->last_meal, ft_get_time());
-	if (time_diff > args->time_to_die)
+	//time_diff = ft_time_diff(philo->last_meal, ft_get_time());
+	// mutex
+	pthread_mutex_lock(&args->block);
+	ft_print_info(philo, "is eating");
+	philo->last_meal = ft_get_time();
+
+	/*if (time_diff > args->time_to_die)
 	{
 		args->die = 1;
 		ft_print_info(philo, "died");
-		exit(0);
+		pthread_mutex_unlock(&args->block);
 		return (1);
-	}
-	philo->last_meal = ft_get_time();
+	}*/
+	// mutex unlock
+	usleep(args->time_to_eat);
 	philo->nb_meal++;
 	if (philo->nb_meal == args->max_meal)
 		args->meal_finished++; // MUTEX
-	ft_print_info(philo, "is eating");
-	usleep(args->time_to_eat);
+	pthread_mutex_unlock(&args->block);
 	ft_release_forks(philo, args);
 	return (0);
 }
@@ -79,11 +84,11 @@ static void	*ft_born(void *data)
 	while (!args->die)
 	{
 		error_code = ft_eat(philo, args);
-		if (ft_eat(philo, args) || args->meal_finished == args->nb_philo)
+		if (error_code || args->meal_finished == args->nb_philo)
 		{
 			if (error_code != 1)
 				ft_error(error_code);
-			return (NULL);
+			break ;
 		}
 		ft_print_info(philo, "is sleeping");
 		usleep(args->time_to_sleep);
@@ -92,19 +97,42 @@ static void	*ft_born(void *data)
 	return (NULL);
 }
 
+void	ft_wait_death(t_args *args, t_philo **philos)
+{
+	long long	time_diff;
+	int	i;
+
+	while (args->meal_finished != args->nb_philo && !args->die)
+	{
+		i = -1;
+		while (++i < args->nb_philo)
+		{
+			pthread_mutex_lock(&args->block);
+			time_diff = ft_time_diff(philos[i]->last_meal, ft_get_time());
+			if (time_diff > args->time_to_die)
+			{
+				ft_print_info(philos[i], "died");
+				args->die = 1;
+			}
+			pthread_mutex_unlock(&args->block);
+			usleep(1);
+		}
+		if (args->die)
+			break ;
+	}
+	
+
+}
+
 int	ft_launch_philos(t_args *args, t_philo **philos)
 {
 	int	i;
-	int	ret;
 
 	i = -1;
 	while (++i < args->nb_philo)
-	{
-		usleep(500);
-		ret = pthread_create(&philos[i]->thread, NULL, ft_born, philos[i]);
-		if (ret)
+		if (pthread_create(&philos[i]->thread, NULL, ft_born, philos[i]))
 			return (4);
-	}
+	ft_wait_death(args, philos);
 	ft_wait_threads(args, philos);
 	return (0);
 }

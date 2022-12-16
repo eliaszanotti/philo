@@ -28,6 +28,7 @@ typedef struct s_args
 	int			max_meal;
 	long long	first_time;
 	pthread_mutex_t		*forks;
+	pthread_mutex_t		block;
 	int			die;
 	int			meal_finished;
 }	t_args;
