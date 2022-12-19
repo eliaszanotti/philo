@@ -21,16 +21,17 @@
 
 typedef struct s_args
 {
-	int			nb_philo;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			max_meal;
-	long long	first_time;
-	pthread_mutex_t		*forks;
-	pthread_mutex_t		block;
-	int			die;
-	int			meal_finished;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	block;
+	pthread_mutex_t	printing;
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				max_meal;
+	long long		first_time;
+	int				die;
+	int				meal_finished;
 }	t_args;
 
 typedef struct s_philo

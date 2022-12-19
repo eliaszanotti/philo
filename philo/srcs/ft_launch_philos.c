@@ -19,60 +19,45 @@ static void	ft_wait_threads(t_args *args, t_philo **philos)
 	i = -1;
 	while (++i < args->nb_philo)
 		pthread_join(philos[i]->thread, NULL);
+	i = -1;
+	while (++i < args->nb_philo)
+		pthread_mutex_destroy(&args->forks[i]);
+	pthread_mutex_destroy(&args->block);
+	pthread_mutex_destroy(&args->printing);
 }
 
-/*void	ft_release_forks(t_philo *philo, t_args *args)
+void	ft_eat(t_philo *philo, t_args *args)
 {
-	pthread_mutex_unlock(&args->forks[philo->left_fork]);
-	if (args->nb_philo > 1)
-		pthread_mutex_unlock(&args->forks[philo->right_fork]);
-}*/
-
-//int    ft_eat(t_philo *philo, t_args *args)
-int    ft_eat(t_philo *philo)
-{
-	t_args	*args;
-	args = philo->rules;
-
 	pthread_mutex_lock(&args->forks[philo->left_fork]);
-	ft_print_info(philo, "has taken a fork left");
+	ft_print_info(philo, "has taken a fork");
 	if (args->nb_philo != 1)
 		pthread_mutex_lock(&args->forks[philo->right_fork]);
-	ft_print_info(philo, "has taken a fork right");
-
-	printf("%dde\n", args->die);
-	//if (args->die)
-	//	return (0);
-
+	ft_print_info(philo, "has taken a fork");
 	pthread_mutex_lock(&args->block);
 	ft_print_info(philo, "is eating");
 	philo->last_meal = ft_get_time();
 	pthread_mutex_unlock(&args->block);
-
 	usleep(args->time_to_eat);
 	philo->nb_meal++;
 	pthread_mutex_unlock(&args->forks[philo->left_fork]);
-	pthread_mutex_unlock(&args->forks[philo->right_fork]);
-	//ft_release_forks(philo, args);
-	return (0);
+	if (args->nb_philo != 1)
+		pthread_mutex_unlock(&args->forks[philo->right_fork]);
 }
 
 static void	*ft_born(void *data)
 {
 	t_philo	*philo;
 	t_args	*args;
-	//int		error_code;
 
 	philo = (t_philo *)data;
 	args = philo->rules;
-	if (args->nb_philo % 2)
-		usleep(10000);
+	//if (args->nb_philo % 2)
+	//	usleep(10000);
 	while (!args->die)
 	{
-		printf("boool : %d\n", !args->die);
-		ft_eat(philo);
+		ft_eat(philo, args);
 		if (args->meal_finished)
-			break ;
+			return (NULL);
 		ft_print_info(philo, "is sleeping");
 		usleep(args->time_to_sleep);
 		ft_print_info(philo, "is thinking");
@@ -104,12 +89,11 @@ void	ft_wait_death(t_args *args, t_philo **philos)
 			break ;
 		i = 0;
 		while (args->max_meal != -1 && i < args->nb_philo && \
-				philos[i]->nb_meal >= args->max_meal)
+				philos[i]->nb_meal >= args->max_meal) // TODO 11 meal eated when args[5] = 10 
 			i++;
 		if (i == args->nb_philo)
 			args->meal_finished = 1;
 	}
-	printf("ENDDDDDDDDDDDDDDDDDDDD");
 }
 
 int	ft_launch_philos(t_args *args, t_philo **philos)

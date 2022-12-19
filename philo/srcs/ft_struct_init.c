@@ -19,12 +19,14 @@ int	ft_mutex_init(t_args *args)
 	i = 0;
 	args->forks = malloc(sizeof(pthread_mutex_t) * args->nb_philo);
 	if (!args->forks)
-		return (9);
+		return (99);
 	while (i < args->nb_philo)
 		if (pthread_mutex_init(&args->forks[i++], NULL))
-			return (8);
+			return (98);
 	if (pthread_mutex_init(&args->block, NULL))
-		return (8);
+		return (98);
+	if (pthread_mutex_init(&args->printing, NULL))
+		return (98);
 	return (0);
 }
 
