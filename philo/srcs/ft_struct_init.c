@@ -23,7 +23,8 @@ int	ft_mutex_init(t_args *args)
 	while (i < args->nb_philo)
 		if (pthread_mutex_init(&args->forks[i++], NULL))
 			return (8);
-	pthread_mutex_init(&args->block, NULL);
+	if (pthread_mutex_init(&args->block, NULL))
+		return (8);
 	return (0);
 }
 
@@ -56,7 +57,7 @@ int	ft_struct_init(t_args *args, char **argv)
 	if (args->nb_philo < 1 || args->nb_philo > 256 || args->time_to_die < 0 \
 			|| args->time_to_eat < 0 || args->time_to_sleep < 0)
 		return (3);
-	args->max_meal = 0;
+	args->max_meal = -1;
 	if (argv[5])
 	{
 		args->max_meal = ft_atoi(argv[5]);
