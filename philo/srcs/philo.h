@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 11:35:39 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 15:28:45 by event01          ###   ########lyon.fr   */
+/*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
+/*   Updated: 2022/12/19 16:33:31 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ int			ft_philos_init(t_args *args, t_philo **philos);
 // ft_time_utils.c
 long long	ft_get_time(void);
 long long	ft_time_diff(long long start, long long end);
+// ft_waits.c
+void	ft_wait_death(t_args *args, t_philo **philos);
+void	ft_wait_threads(t_args *args, t_philo **philos);
 
 #endif

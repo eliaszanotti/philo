@@ -6,13 +6,13 @@
 /*   By: event01 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:46:53 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 15:35:53 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/19 16:31:40 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	ft_wait_threads(t_args *args, t_philo **philos)
+/*static void	ft_wait_threads(t_args *args, t_philo **philos)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static void	ft_wait_threads(t_args *args, t_philo **philos)
 		pthread_mutex_destroy(&args->forks[i]);
 	pthread_mutex_destroy(&args->block);
 	pthread_mutex_destroy(&args->printing);
-}
+}*/
 
 void	ft_eat(t_philo *philo, t_args *args)
 {
@@ -65,7 +65,7 @@ static void	*ft_born(void *data)
 	return (NULL);
 }
 
-void	ft_wait_death(t_args *args, t_philo **philos)
+/*void	ft_wait_death(t_args *args, t_philo **philos)
 {
 	long long	time_diff;
 	int	i;
@@ -94,7 +94,7 @@ void	ft_wait_death(t_args *args, t_philo **philos)
 		if (i == args->nb_philo)
 			args->meal_finished = 1;
 	}
-}
+}*/
 
 int	ft_launch_philos(t_args *args, t_philo **philos)
 {
