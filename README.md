@@ -7,8 +7,8 @@
 - 2 : Arguments are not valid integers ("-1" or "lorem" are invalid arguments)
 - 3 : Incorrect arguments (example : nb philos > 256 or nb philos < 1)
 - 4 : Impossible to create threads
-- 8 : Mutex cannot be initialized
-- 9 : Malloc cannot be created
+- 98 : Mutex cannot be initialized
+- 99 : Malloc cannot be created
 
 ## Sources 
 
