@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_log.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 16:40:13 by elias             #+#    #+#             */
+/*   Updated: 2022/12/19 16:49:57 by elias            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	ft_error(int error_code)
@@ -41,7 +53,7 @@ void	ft_print_info(t_philo *philo, char *str)
 	t_args		*args;
 
 	args = philo->rules;
-	time_diff = ft_time_diff(args->first_time, ft_get_time());
+	time_diff = ft_diff(args->first_time, ft_get_time());
 	pthread_mutex_lock(&args->printing);
 	if (!args->die)
 	{

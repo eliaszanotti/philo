@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   ft_time_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: event01 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:40:17 by event01           #+#    #+#             */
-/*   Updated: 2022/12/14 13:40:38 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/19 16:48:33 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long long	ft_get_time(void)
 	return (t.tv_sec * 1000 + t.tv_usec / 1000);
 }
 
-long long	ft_time_diff(long long start, long long end)
+long long	ft_diff(long long start, long long end)
 {
 	return (end - start);
 }

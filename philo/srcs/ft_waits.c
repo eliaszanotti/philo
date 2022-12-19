@@ -6,14 +6,15 @@
 /*   By: elias </var/spool/mail/elias>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:25:43 by elias             #+#    #+#             */
-/*   Updated: 2022/12/19 16:31:04 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/19 16:59:52 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_wait_death(t_args *args, t_philo **philos)
+#include "philo.h"
+
+void	ft_wait_death(t_args *args, t_philo **p)
 {
-	long long	time_diff;
-	int	i;
+	int			i;
 
 	while (args->meal_finished == 0)
 	{
@@ -21,10 +22,9 @@ void	ft_wait_death(t_args *args, t_philo **philos)
 		while (++i < args->nb_philo && !args->die)
 		{
 			pthread_mutex_lock(&args->block);
-			time_diff = ft_time_diff(philos[i]->last_meal, ft_get_time());
-			if (time_diff > args->time_to_die)
+			if (ft_diff(p[i]->last_meal, ft_get_time()) > args->time_to_die)
 			{
-				ft_print_info(philos[i], "died");
+				ft_print_info(p[i], "died");
 				args->die = 1;
 			}
 			pthread_mutex_unlock(&args->block);
@@ -34,7 +34,7 @@ void	ft_wait_death(t_args *args, t_philo **philos)
 			break ;
 		i = 0;
 		while (args->max_meal != -1 && i < args->nb_philo && \
-				philos[i]->nb_meal >= args->max_meal) // TODO 11 meal eated when args[5] = 10 
+				p[i]->nb_meal >= args->max_meal - 1)
 			i++;
 		if (i == args->nb_philo)
 			args->meal_finished = 1;

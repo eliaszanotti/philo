@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:51:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/12 19:15:08 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/19 16:46:08 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		return (ft_error(error_code));
 	philos = malloc(sizeof(t_philo) * args.nb_philo);
 	if (!philos)
-		return (ft_error(9));
+		return (ft_error(99));
 	error_code = ft_philos_init(&args, philos);
 	if (error_code)
 		return (ft_error(error_code));

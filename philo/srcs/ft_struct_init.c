@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/14 15:28:25 by event01          ###   ########lyon.fr   */
+/*   Updated: 2022/12/19 16:48:09 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_philos_init(t_args *args, t_philo **philos)
 	{
 		philos[i] = malloc(sizeof(t_philo));
 		if (!philos[i])
-			return (9);
+			return (99);
 		philos[i]->rules = args;
 		philos[i]->nb = i;
 		philos[i]->left_fork = i;
