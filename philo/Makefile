@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 11:24:38 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/19 16:39:03 by elias            ###   ########.fr        #
+#    Updated: 2023/03/03 14:02:25 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ RM		= rm -rf
 all :		${NAME}
 
 %.o: %.c	${DIR_SRC}philo.h Makefile
-			${CC} ${CFLAGS} -I ${DIR_SRC} -c $< -o ${<:.c=.o} 
+			${CC} ${CFLAGS} -pthread -I ${DIR_SRC} -c $< -o ${<:.c=.o} 
 
 ${NAME}:	${OBJS}
-			${CC} ${OBJS} -o ${NAME}
+			${CC} ${OBJS} -pthread -o ${NAME}
 
 clean :
 			${RM} ${OBJS}
