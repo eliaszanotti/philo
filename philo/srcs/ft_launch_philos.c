@@ -6,7 +6,7 @@
 /*   By: event01 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:46:53 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/19 16:52:27 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/06 12:21:08 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,3 @@ static void	*ft_born(void *data)
 	return (NULL);
 }
 
-int	ft_launch_philos(t_args *args, t_philo **philos)
-{
-	int	i;
-
-	i = -1;
-	while (++i < args->nb_philo)
-		if (pthread_create(&philos[i]->thread, NULL, ft_born, philos[i]))
-			return (4);
-	ft_wait_death(args, philos);
-	ft_wait_threads(args, philos);
-	return (0);
-}

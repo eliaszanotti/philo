@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 11:55:59 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/06 12:11:49 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ endif
 
 S_LIST		= main.c \
 			ft_atoi.c \
-			ft_init_all.c \
-			ft_log.c \
+			${D_UTILS}ft_init_all.c \
 			${D_UTILS}ft_error.c \
+			${D_UTILS}ft_print_info.c \
 			ft_launch_philos.c \
 			ft_time_utils.c \
 			ft_waits.c \
