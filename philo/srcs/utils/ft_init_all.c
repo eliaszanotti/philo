@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 20:35:55 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:49:47 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static int	ft_philos_init(t_args *args)
 		args->philos[i]->right_fork = (i + 1) % args->nb_philos;
 		args->philos[i]->last_meal = args->first_time;
 		args->philos[i]->nb_meal = 0;
+		args->philos[i]->is_dead = 0;
 	}
 	return (0);
 }
