@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:00:44 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 20:51:51 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:15:37 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	*ft_born(t_philo *philo)
 	t_args	*args;
 
 	args = philo->rules;
+	if (philo->nb % 2)
+		usleep(1000);
 	if (args->nb_philos == 1)
 	{
 		ft_print_info(philo, "is tinking");
