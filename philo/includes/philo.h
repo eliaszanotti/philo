@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2022/12/19 17:00:05 by elias            ###   ########.fr       */
+/*   Updated: 2023/03/06 12:07:24 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
+struct s_philo;
+
 typedef struct s_args
 {
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	block;
 	pthread_mutex_t	printing;
+	struct s_philo	**philos;
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
@@ -53,9 +56,8 @@ int			ft_argv_checker(char **argv);
 void		ft_print_info(t_philo *philo, char *str);
 // ft_launch_philos.c
 int			ft_launch_philos(t_args *args, t_philo **philos);
-// ft_struct_init.c
-int			ft_struct_init(t_args *args, char **argv);
-int			ft_philos_init(t_args *args, t_philo **philos);
+//	ft_init_all.c
+int			ft_init_all(t_args *args, char **argv);
 // ft_time_utils.c
 long long	ft_get_time(void);
 long long	ft_diff(long long start, long long end);
