@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 19:34:30 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:45:13 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ long long	ft_get_time(void);
 long long	ft_diff(long long start, long long end);
 // ft_waits.c
 int			ft_wait_death(t_args *args);
-void		ft_wait_threads(t_args *args, t_philo **p);
 
 void		*ft_born(t_philo *philo);
 
 int			ft_start_execution(t_args *args);
 
+void	ft_free_all(t_args *args);
+void	ft_wait_threads(t_args *args);
 #endif
