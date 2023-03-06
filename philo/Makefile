@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/03 14:24:54 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/03 15:53:49 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,21 +19,22 @@ ifeq ($(OS), Darwin)
 	PRINT	= @printf
 endif
 
-S_LIST		= ${DIR_SRC}main.c \
-			${DIR_SRC}ft_atoi.c \
-			${DIR_SRC}ft_struct_init.c \
-			${DIR_SRC}ft_log.c \
-			${DIR_SRC}ft_launch_philos.c \
-			${DIR_SRC}ft_time_utils.c \
-			${DIR_SRC}ft_waits.c
+S_LIST		= main.c \
+			ft_atoi.c \
+			ft_struct_init.c \
+			${D_PARSE}ft_log.c \
+			ft_launch_philos.c \
+			ft_time_utils.c \
+			ft_waits.c \
 
-#S_PHILO		= ${addprefix ${DIR_SRC}, ${S_LIST}}
-OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_LIST))
+S_PHILO		= ${addprefix ${DIR_SRC}, ${S_LIST}}
+OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_PHILO))
 
 # DIRECTORIES
 DIR_OBJS	= .objs/
 DIR_INCLUDE = includes/
 DIR_SRC		= srcs/
+D_PARSE		= parsing/
 
 # VARIABLES
 NAME		= philo
