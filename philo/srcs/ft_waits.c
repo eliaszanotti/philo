@@ -6,13 +6,11 @@
 /*   By: elias </var/spool/mail/elias>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:25:43 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 18:31:03 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:33:53 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-
 
 void	ft_wait_threads(t_args *args, t_philo **philos)
 {

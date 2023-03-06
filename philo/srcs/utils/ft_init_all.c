@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:23:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 18:30:33 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:21:13 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	ft_struct_init(t_args *args, char **argv)
 	}
 	args->first_time = ft_get_time();
 	args->die = 0;
-	//args->meal_finished = 0;
 	return (0);
 }
 

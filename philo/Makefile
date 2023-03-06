@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 19:03:01 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/06 20:22:15 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ S_LIST		= main.c \
 			${D_UTILS}ft_init_all.c \
 			${D_UTILS}ft_error.c \
 			${D_UTILS}ft_print_info.c \
-			ft_launch_philos.c \
 			ft_time_utils.c \
 			ft_waits.c \
 			${D_PARSE}ft_argv_checker.c	\
@@ -71,7 +70,7 @@ ${DIR_OBJS}%.o: %.c	${DIR_INCLUDE}philo.h Makefile
 ${NAME}:	ascii ${OBJS}
 			@${PRINT} "${GREEN}${SUPPR}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT} "${YELLOW}Compiling ${NAME}...${DEFAULT}"
-			@${CC} -fsanitize=address ${OBJS} -o ${NAME} -pthread
+			@${CC} ${OBJS} -o ${NAME} -pthread
 			@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}\n\n"
 
 ascii :

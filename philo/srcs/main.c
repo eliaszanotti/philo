@@ -6,12 +6,11 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:51:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 17:17:11 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:33:59 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 int	main(int argc, char **argv)
 {

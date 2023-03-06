@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 19:11:13 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:34:30 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-struct s_philo;
+struct	s_philo;
 
 typedef struct s_args
 {
@@ -62,10 +62,10 @@ int			ft_init_all(t_args *args, char **argv);
 long long	ft_get_time(void);
 long long	ft_diff(long long start, long long end);
 // ft_waits.c
-int	ft_wait_death(t_args *args);
+int			ft_wait_death(t_args *args);
 void		ft_wait_threads(t_args *args, t_philo **p);
 
-void	*ft_born(t_philo *philo);
+void		*ft_born(t_philo *philo);
 
 int			ft_start_execution(t_args *args);
 
