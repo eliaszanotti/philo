@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 20:34:15 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/06 21:01:54 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,14 @@ S_LIST		= main.c \
 			${D_EXEC}ft_wait_death.c \
 			${D_EXEC}ft_wait_threads.c \
 			${D_PARSE}ft_argv_checker.c	\
+			${D_TIME}ft_diff.c \
+			${D_TIME}ft_get_time.c \
 			${D_UTILS}ft_atoi.c \
 			${D_UTILS}ft_error.c \
 			${D_UTILS}ft_free_all.c \
 			${D_UTILS}ft_init_all.c \
+			${D_UTILS}ft_is_dead.c \
 			${D_UTILS}ft_print_info.c \
-			${D_UTILS}ft_time_utils.c \
 
 S_PHILO		= ${addprefix ${DIR_SRC}, ${S_LIST}}
 OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_PHILO))
@@ -40,9 +42,10 @@ OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_PHILO))
 DIR_OBJS	= .objs/
 DIR_INCLUDE = includes/
 DIR_SRC		= srcs/
-D_PARSE		= parsing/
-D_UTILS		= utils/
 D_EXEC		= exec/
+D_PARSE		= parsing/
+D_TIME		= time/
+D_UTILS		= utils/
 
 # VARIABLES
 NAME		= philo

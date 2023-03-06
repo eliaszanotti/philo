@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_all.c                                      :+:      :+:    :+:   */
+/*   ft_is_dead.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 20:31:25 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 20:50:39 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/03/06 20:52:33 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/03/06 20:52:45 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free_all(t_args *args)
+int	ft_is_dead(t_args *args, t_philo *philo)
 {
-	t_philo	**philos;
-	int		i;
+	long long	diff;
 
-	philos = args->philos;
-	i = -1;
-	while (++i < args->nb_philos)
-		free(philos[i]);
-	free(philos);
-	free(args->forks);
+	diff = ft_diff(philo->last_meal, ft_get_time());
+	if (diff > args->time_to_die)
+		return (1);
+	return (0);
 }

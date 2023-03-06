@@ -6,21 +6,11 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:23 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 20:21:05 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:52:50 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	ft_is_dead(t_args *args, t_philo *philo)
-{
-	long long	diff;
-
-	diff = ft_diff(philo->last_meal, ft_get_time());
-	if (diff > args->time_to_die)
-		return (1);
-	return (0);
-}
 
 static int	ft_check_each_philos(t_args *args, int *nb_finished_meal)
 {

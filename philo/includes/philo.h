@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 20:45:13 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:59:44 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,23 @@ typedef struct s_philo
 	int			is_dead;
 }	t_philo;
 
-// ft_atoi.c
-int			ft_atoi(const char *str);
-// ft_error.c
-int			ft_error(int error_code);
-int			ft_argv_checker(char **argv);
-void		ft_print_info(t_philo *philo, char *str);
-// ft_launch_philos.c
-int			ft_launch_philos(t_args *args);
-//	ft_init_all.c
-int			ft_init_all(t_args *args, char **argv);
-// ft_time_utils.c
-long long	ft_get_time(void);
-long long	ft_diff(long long start, long long end);
-// ft_waits.c
-int			ft_wait_death(t_args *args);
-
+//	EXEC
 void		*ft_born(t_philo *philo);
-
+int			ft_launch_philos(t_args *args);
 int			ft_start_execution(t_args *args);
+int			ft_wait_death(t_args *args);
+void		ft_wait_threads(t_args *args);
+//	PARSING
+int			ft_argv_checker(char **argv);
+//	TIME
+long long	ft_diff(long long start, long long end);
+long long	ft_get_time(void);
+//	UTILS
+int			ft_atoi(const char *str);
+int			ft_error(int error_code);
+void		ft_free_all(t_args *args);
+int			ft_init_all(t_args *args, char **argv);
+int			ft_is_dead(t_args *args, t_philo *philo);
+void		ft_print_info(t_philo *philo, char *str);
 
-void	ft_free_all(t_args *args);
-void	ft_wait_threads(t_args *args);
 #endif

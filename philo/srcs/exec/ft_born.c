@@ -6,13 +6,13 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:00:44 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 19:30:17 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:51:51 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_take_forks(t_philo *philo)
+static int	ft_take_forks(t_philo *philo)
 {
 	t_args	*args;
 
@@ -35,7 +35,7 @@ int	ft_take_forks(t_philo *philo)
 	return (0);
 }
 
-int	ft_eat(t_philo *philo)
+static int	ft_eat(t_philo *philo)
 {
 	t_args	*args;
 
