@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 12:07:24 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:29:17 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ typedef struct s_args
 	pthread_mutex_t	block;
 	pthread_mutex_t	printing;
 	struct s_philo	**philos;
-	int				nb_philo;
+	int				nb_philos;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				max_meal;
+	int				min_meal;
 	long long		first_time;
 	int				die;
-	int				meal_finished;
 }	t_args;
 
 typedef struct s_philo
@@ -55,14 +54,18 @@ int			ft_error(int error_code);
 int			ft_argv_checker(char **argv);
 void		ft_print_info(t_philo *philo, char *str);
 // ft_launch_philos.c
-int			ft_launch_philos(t_args *args, t_philo **philos);
+int			ft_launch_philos(t_args *args);
 //	ft_init_all.c
 int			ft_init_all(t_args *args, char **argv);
 // ft_time_utils.c
 long long	ft_get_time(void);
 long long	ft_diff(long long start, long long end);
 // ft_waits.c
-void		ft_wait_death(t_args *args, t_philo **philos);
+int	ft_wait_death(t_args *args);
 void		ft_wait_threads(t_args *args, t_philo **p);
+
+void		*ft_born(void *data);
+
+int			ft_start_execution(t_args *args);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 12:11:49 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/06 18:27:24 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ S_LIST		= main.c \
 			ft_time_utils.c \
 			ft_waits.c \
 			${D_PARSE}ft_argv_checker.c	\
+			${D_EXEC}ft_start_execution.c \
+			${D_EXEC}ft_launch_philos.c \
+			${D_EXEC}ft_wait_death.c \
 
 S_PHILO		= ${addprefix ${DIR_SRC}, ${S_LIST}}
 OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_PHILO))
@@ -38,6 +41,7 @@ DIR_INCLUDE = includes/
 DIR_SRC		= srcs/
 D_PARSE		= parsing/
 D_UTILS		= utils/
+D_EXEC		= exec/
 
 # VARIABLES
 NAME		= philo
