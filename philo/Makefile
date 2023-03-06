@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 18:27:24 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/06 19:03:01 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ S_LIST		= main.c \
 			${D_EXEC}ft_start_execution.c \
 			${D_EXEC}ft_launch_philos.c \
 			${D_EXEC}ft_wait_death.c \
+			${D_EXEC}ft_born.c \
 
 S_PHILO		= ${addprefix ${DIR_SRC}, ${S_LIST}}
 OBJS		= $(patsubst %.c, $(DIR_OBJS)%.o, $(S_PHILO))

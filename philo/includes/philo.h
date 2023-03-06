@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 18:29:17 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:11:13 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	int			right_fork;
 	long long	last_meal;
 	int			nb_meal;
+	int			is_dead;
 }	t_philo;
 
 // ft_atoi.c
@@ -64,7 +65,7 @@ long long	ft_diff(long long start, long long end);
 int	ft_wait_death(t_args *args);
 void		ft_wait_threads(t_args *args, t_philo **p);
 
-void		*ft_born(void *data);
+void	*ft_born(t_philo *philo);
 
 int			ft_start_execution(t_args *args);
 
