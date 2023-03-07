@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/03/06 21:01:54 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/03/07 14:52:13 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ S_LIST		= main.c \
 			${D_PARSE}ft_argv_checker.c	\
 			${D_TIME}ft_diff.c \
 			${D_TIME}ft_get_time.c \
+			${D_TIME}ft_usleep.c \
 			${D_UTILS}ft_atoi.c \
 			${D_UTILS}ft_error.c \
 			${D_UTILS}ft_free_all.c \

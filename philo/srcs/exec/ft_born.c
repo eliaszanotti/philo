@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:00:44 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 21:15:37 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:52:52 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*ft_born(t_philo *philo)
 
 	args = philo->rules;
 	if (philo->nb % 2)
-		usleep(1000);
+		ft_usleep(1000);
 	if (args->nb_philos == 1)
 	{
 		ft_print_info(philo, "is tinking");
@@ -74,7 +74,7 @@ void	*ft_born(t_philo *philo)
 		if (ft_eat(philo))
 			return (NULL);
 		ft_print_info(philo, "is sleeping");
-		usleep(args->time_to_sleep);
+		ft_usleep(args->time_to_sleep);
 	}
 	return (NULL);
 }

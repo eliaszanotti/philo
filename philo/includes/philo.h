@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:32:51 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 20:59:44 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:13:27 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int			ft_argv_checker(char **argv);
 //	TIME
 long long	ft_diff(long long start, long long end);
 long long	ft_get_time(void);
+void		ft_usleep(size_t sleep);
 //	UTILS
 int			ft_atoi(const char *str);
 int			ft_error(int error_code);
