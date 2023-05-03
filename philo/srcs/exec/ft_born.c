@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:00:44 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/07 14:52:52 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/03 12:44:29 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_eat(t_philo *philo)
 	philo->last_meal = ft_get_time();
 	philo->nb_meal++;
 	pthread_mutex_unlock(&args->block);
-	usleep(args->time_to_eat);
+	ft_usleep(args->time_to_eat);
 	pthread_mutex_unlock(&args->forks[philo->left_fork]);
 	pthread_mutex_unlock(&args->forks[philo->right_fork]);
 	if (philo->is_dead)

@@ -6,34 +6,18 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:48:33 by elias             #+#    #+#             */
-/*   Updated: 2023/03/07 15:13:11 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/03 12:41:58 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static size_t	ft_get_usleep_time(void)
+void	ft_usleep(int time)
 {
-	struct timeval	time;
-	size_t			total;
+	long int	new_time;
 
-	gettimeofday(&time, NULL);
-	total = time.tv_sec;
-	total *= 1000000;
-	total += time.tv_usec;
-	return (total);
-}
-
-void	ft_usleep(size_t time)
-{
-	size_t	first_time;
-	size_t	end_time;
-
-	first_time = ft_get_usleep_time();
-	end_time = first_time + time - 1;
-	while (first_time < end_time)
-	{
-		first_time = ft_get_usleep_time();
-		usleep(10);
-	}
+	time = time / 1000;
+	new_time = ft_get_time();
+	while (ft_get_time() - new_time < time)
+		usleep(time / 10);
 }
