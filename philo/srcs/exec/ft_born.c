@@ -6,17 +6,32 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:00:44 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/05/03 12:44:29 by elias            ###   ########.fr       */
+/*   Updated: 2023/05/10 16:42:30 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	ft_reorder_forks(t_philo *philo)
+{
+	int	swap;
+
+	if (philo->left_fork < philo->right_fork)
+	{
+		swap = philo->left_fork;
+		philo->left_fork = philo->right_fork;
+		philo->right_fork = swap;
+	}
+	return (0);
+}
 
 static int	ft_take_forks(t_philo *philo)
 {
 	t_args	*args;
 
 	args = philo->rules;
+	if (ft_reorder_forks(philo))
+		return (1);
 	pthread_mutex_lock(&args->forks[philo->left_fork]);
 	if (philo->is_dead)
 	{

@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/05/03 12:48:03 by elias            ###   ########.fr        #
+#    Updated: 2023/05/10 16:43:00 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ D_UTILS		= utils/
 # VARIABLES
 NAME		= philo
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g3 #TODO remove g3
+CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -rf
 MAKEFLAGS	+= --no-print-directory
 
