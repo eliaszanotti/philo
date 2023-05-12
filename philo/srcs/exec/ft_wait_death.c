@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:23 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/03/06 20:52:50 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:41:49 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_wait_death(t_args *args)
 	while (1)
 	{
 		nb_finished_meal = 0;
-		usleep(100);
+		ft_usleep(100);
 		pthread_mutex_lock(&args->block);
 		if (ft_check_each_philos(args, &nb_finished_meal))
 		{
