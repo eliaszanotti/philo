@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:40:13 by elias             #+#    #+#             */
-/*   Updated: 2023/03/06 21:04:36 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:01:55 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_print_info(t_philo *philo, char *str)
 	t_args		*args;
 
 	args = philo->rules;
-	time_diff = ft_diff(args->first_time, ft_get_time());
 	pthread_mutex_lock(&args->printing);
+	time_diff = ft_diff(args->first_time, ft_get_time());
 	if (!args->die)
 	{
 		printf("\033[1;32m%lli", time_diff);
