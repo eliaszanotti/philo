@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 14:17:35 by ezanotti          #+#    #+#              #
-#    Updated: 2023/05/10 16:43:00 by elias            ###   ########.fr        #
+#    Updated: 2023/05/17 12:50:43 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,34 +72,33 @@ ${DIR_OBJS}%.o: %.c	${DIR_INCLUDE}philo.h Makefile
 			@${PRINT} "${YELLOW}${SUPPR}Creating ${NAME}'s objects : $@"
 			@${CC} ${CFLAGS} -I ${DIR_INCLUDE} -c $< -o $@
 
-${NAME}:	ascii ${OBJS}
+${NAME}:	${OBJS}
 			@${PRINT} "${GREEN}${SUPPR}Creating ${NAME}'s objects : DONE\n"
 			@${PRINT} "${YELLOW}Compiling ${NAME}...${DEFAULT}"
 			@${CC} ${OBJS} -o ${NAME} -pthread
-			@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}\n\n"
-
-ascii :
+			@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}"
 			@${PRINT} "$$ASCII"
 
-clean :		ascii
+clean :
 			@${PRINT} "${RED}Deleting objects : DONE\n"
 			@${RM} ${DIR_OBJS}
 
 fclean :	clean
-			@${PRINT} "${RED}Deleting executable : DONE${DEFAULT}\n\n"
+			@${PRINT} "${RED}Deleting executable : DONE${DEFAULT}\n"
 			@${RM} ${NAME}
 
 re :		fclean all
 
 define ASCII
-${CYAN} _____ _____ _____ __    _____ _____ _____ _____ _____ _____ _____ _____ 
-|  _  |  |  |     |  |  |     |   __|     |  _  |  |  |   __| __  |   __|
-|   __|     |-   -|  |__|  |  |__   |  |  |   __|     |   __|    -|__   |
-|__|  |__|__|_____|_____|_____|_____|_____|__|  |__|__|_____|__|__|_____|
+${CYAN} 
+ _____ _____ _____ __    _____ 
+|  _  |  |  |     |  |  |     |
+|   __|     |-   -|  |__|  |  |
+|__|  |__|__|_____|_____|_____|
 
 ${DEFAULT}
 endef
 
 export ASCII
 
-.PHONY :	all re clean fclean ascii
+.PHONY :	all re clean fclean
